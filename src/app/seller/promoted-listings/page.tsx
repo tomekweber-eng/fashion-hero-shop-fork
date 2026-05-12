@@ -308,32 +308,52 @@ export default function PromotedListingsLandingPage() {
         </div>
       </section>
 
-      {/* WHY */}
+      {/* PROOF — testimonial + stats (different visual pattern from cards) */}
       <section className="bg-cream-light py-10 md:py-14">
         <div className="mx-auto max-w-5xl px-4">
           <div className="mb-8 max-w-2xl">
             <span className="text-label">Dlaczego to działa</span>
             <h2 className="mt-2 text-2xl font-light text-charcoal md:text-3xl">
-              3 powody, dla których klienci zobaczą Twoje produkty pierwsi.
+              Sprzedawcy z {categoryLabel} już zarabiają więcej.
             </h2>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            <BenefitCard
-              icon="01"
-              title="Top kategorii"
-              body="Pierwsze 3 pozycje w kategorii należą do promowanych sprzedawców. To one zbierają 60%+ kliknięć."
-            />
-            <BenefitCard
-              icon="02"
-              title="Karuzela na home"
-              body="Pakiet Premium umieszcza Twoje produkty w karuzeli promowanych na stronie głównej Fashion Hero."
-            />
-            <BenefitCard
-              icon="03"
-              title="Boost w wyszukiwarce"
-              body="Twoje produkty trafiają wyżej na liście wyników wyszukiwania w obrębie Twojej kategorii."
-            />
+          <div className="overflow-hidden rounded-3xl border border-black/10 bg-white">
+            {/* big testimonial */}
+            <div className="grid gap-8 p-8 md:grid-cols-[1fr_auto] md:items-center md:gap-12 md:p-12">
+              <div>
+                <div className="mb-4 flex items-center gap-1 text-amber-400">
+                  <StarIcon className="h-4 w-4" filled />
+                  <StarIcon className="h-4 w-4" filled />
+                  <StarIcon className="h-4 w-4" filled />
+                  <StarIcon className="h-4 w-4" filled />
+                  <StarIcon className="h-4 w-4" filled />
+                </div>
+                <blockquote className="text-xl font-light leading-relaxed text-charcoal md:text-2xl">
+                  &ldquo;Promoted Listings dał nam <span className="font-medium">+187% przychodu</span> w 3 miesiące. Pierwsze pozycje w kategorii odpalają sprzedaż lepiej niż jakikolwiek kanał płatny, na który próbowaliśmy wcześniej.&rdquo;
+                </blockquote>
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal text-[13px] font-medium text-white">
+                    AK
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-medium text-charcoal">Anna Kowalska</p>
+                    <p className="text-[12px] text-warm-gray">Właścicielka, Shoes & Co · 18 miesięcy na Fashion Hero</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hidden md:block">
+                <div className="h-48 w-px bg-black/10" />
+              </div>
+            </div>
+
+            {/* stats row */}
+            <div className="grid grid-cols-3 border-t border-black/10 bg-cream-light/60 divide-x divide-black/10">
+              <ProofStat value="60%" label="kliknięć trafia w top 3 kategorii" />
+              <ProofStat value="+187%" label="średni wzrost przychodu sprzedawcy" />
+              <ProofStat value="240+" label="aktywnych sprzedawców w pilocie" />
+            </div>
           </div>
         </div>
       </section>
@@ -426,12 +446,11 @@ function HeroStat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function BenefitCard({ icon, title, body }: { icon: string; title: string; body: string }) {
+function ProofStat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-black/10 bg-white p-6 md:p-7">
-      <span className="text-[11px] font-medium uppercase tracking-[0.6px] text-warm-gray">{icon}</span>
-      <h3 className="mt-3 text-xl font-medium text-charcoal">{title}</h3>
-      <p className="mt-2 text-[13px] leading-relaxed text-warm-gray">{body}</p>
+    <div className="px-5 py-6 text-center md:px-7 md:py-7">
+      <p className="text-3xl font-light text-charcoal md:text-4xl">{value}</p>
+      <p className="mt-1.5 text-[11px] uppercase tracking-[0.6px] text-warm-gray md:text-[12px]">{label}</p>
     </div>
   );
 }

@@ -81,7 +81,10 @@ export function PromotedListingsBanner() {
           </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-3 self-start md:flex-col md:items-end md:gap-2 md:self-center">
+        <div className="flex shrink-0 flex-col items-start gap-2.5 self-start md:items-end md:self-center">
+          <span className="btn-cta !bg-black !text-white border border-white/15 shadow-lg shadow-black/30 hover:!bg-charcoal-light">
+            Zarabiaj więcej
+          </span>
           <span className="btn-cta bg-white !text-charcoal hover:opacity-90">
             Sprawdź pakiety
           </span>
