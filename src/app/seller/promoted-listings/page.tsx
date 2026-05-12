@@ -22,20 +22,20 @@ const PRESET_PACKAGES: {
     amount: 49,
     subtitle: "Start",
     bullets: [
-      "Wyrozniona pozycja w kategorii",
+      "Wyróżniona pozycja w kategorii",
       "Badge PROMOWANE na karcie produktu",
-      "Raport miesieczny z efektow",
+      "Raport miesięczny z efektów",
     ],
   },
   {
     id: "199",
     amount: 199,
     subtitle: "Premium",
-    badge: "Najczesciej wybierane",
+    badge: "Najczęściej wybierane",
     bullets: [
       "Top 3 miejsca w kategorii",
       "Karuzela promowanych na home",
-      "Boost na liscie wyszukiwania",
+      "Boost na liście wyszukiwania",
       "Dedykowany opiekun konta",
     ],
   },
@@ -43,28 +43,28 @@ const PRESET_PACKAGES: {
 
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
-    q: "Jak szybko zobacze efekty?",
-    a: "Twoje produkty trafiaja na promowane pozycje w ciagu 24h od aktywacji pakietu. Pierwsze wyniki (wzrost CTR i odslon) widac zwykle juz w pierwszym tygodniu.",
+    q: "Jak szybko zobaczę efekty?",
+    a: "Twoje produkty trafiają na promowane pozycje w ciągu 24h od aktywacji pakietu. Pierwsze wyniki (wzrost CTR i odsłon) widać zwykle już w pierwszym tygodniu.",
   },
   {
-    q: "Czy moge anulowac w dowolnym momencie?",
-    a: "Tak. Pakiet jest miesieczny i mozesz go anulowac przed kolejnym okresem rozliczeniowym. Nie ma minimalnego zobowiazania.",
+    q: "Czy mogę anulować w dowolnym momencie?",
+    a: "Tak. Pakiet jest miesięczny i możesz go anulować przed kolejnym okresem rozliczeniowym. Nie ma minimalnego zobowiązania.",
   },
   {
-    q: "Czym rozni sie pakiet 49 PLN od 199 PLN?",
-    a: "Pakiet 49 PLN daje wyroznienie w obrebie kategorii. Pakiet 199 PLN dodatkowo umieszcza Twoje produkty w karuzeli na stronie glownej oraz boostuje je na liscie wyszukiwania.",
+    q: "Czym różni się pakiet 49 PLN od 199 PLN?",
+    a: "Pakiet 49 PLN daje wyróżnienie w obrębie kategorii. Pakiet 199 PLN dodatkowo umieszcza Twoje produkty w karuzeli na stronie głównej oraz boostuje je na liście wyszukiwania.",
   },
   {
-    q: "Czy promocja dotyczy wszystkich moich produktow?",
-    a: "Tak. Wszystkie produkty w Twoim sklepie sa rotowane w slotach promowanych w trakcie trwania pakietu. W pakiecie Premium dodajemy do tego rotacje na home page.",
+    q: "Czy promocja dotyczy wszystkich moich produktów?",
+    a: "Tak. Wszystkie produkty w Twoim sklepie są rotowane w slotach promowanych w trakcie trwania pakietu. W pakiecie Premium dodajemy do tego rotację na home page.",
   },
   {
-    q: "Co jesli moja kategoria nie jest jeszcze w pilotazu?",
-    a: "Pilot obejmuje aktualnie Shoes i Bags. Pracujemy nad rozszerzeniem na kolejne kategorie. Zostaw nam swoje zainteresowanie - dolaczysz do listy oczekujacych z priorytetem dostepu.",
+    q: "Co jeśli moja kategoria nie jest jeszcze w pilotażu?",
+    a: "Pilot obejmuje aktualnie Shoes i Bags. Pracujemy nad rozszerzeniem na kolejne kategorie. Zostaw nam swoje zainteresowanie — dołączysz do listy oczekujących z priorytetem dostępu.",
   },
   {
-    q: "Jak mierzymy skutecznosc?",
-    a: "Raportujemy: liczbe odslon, wspolczynnik klikniec (CTR), liczbe wejsc na karte produktu z promocji oraz przypisany przychod. Wszystko w raporcie miesiecznym.",
+    q: "Jak mierzymy skuteczność?",
+    a: "Raportujemy: liczbę odsłon, współczynnik kliknięć (CTR), liczbę wejść na kartę produktu z promocji oraz przypisany przychód. Wszystko w raporcie miesięcznym.",
   },
 ];
 
@@ -108,10 +108,10 @@ export default function PromotedListingsLandingPage() {
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
         <h1 className="text-2xl font-light text-charcoal">Promoted Listings</h1>
         <p className="mt-3 text-[13px] text-warm-gray">
-          Ten program jest aktualnie dostepny tylko dla wybranych kategorii (Shoes, Bags).
+          Ten program jest aktualnie dostępny tylko dla wybranych kategorii (Shoes, Bags).
         </p>
         <Link href="/seller/dashboard" className="btn-cta-outline mt-6 inline-flex">
-          Wroc do panelu
+          Wróć do panelu
         </Link>
       </div>
     );
@@ -143,23 +143,23 @@ export default function PromotedListingsLandingPage() {
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-charcoal text-white text-2xl">
           ✓
         </div>
-        <h1 className="text-3xl font-light text-charcoal">Dziekujemy!</h1>
+        <h1 className="text-3xl font-light text-charcoal">Dziękujemy!</h1>
         <p className="mt-3 text-[14px] text-warm-gray">
-          Wkrotce odezwiemy sie z dostepem do Promoted Listings dla kategorii{" "}
+          Wkrótce odezwiemy się z dostępem do Promoted Listings dla kategorii{" "}
           <span className="text-charcoal font-medium">
             {category ? PILOT_CATEGORY_LABEL[category] : ""}
           </span>
           .
         </p>
         <p className="mt-2 text-[13px] text-warm-gray">
-          Wybrales pakiet:{" "}
+          Wybrałeś pakiet:{" "}
           <span className="font-medium text-charcoal">
             {selected === "custom" ? `Custom (${customAmount} PLN)` : `${selected} PLN`}
           </span>
         </p>
         <div className="mt-10 flex flex-col items-center gap-3">
           <Link href="/seller/dashboard" className="btn-cta">
-            Wroc do panelu
+            Wróć do panelu
           </Link>
           <button
             onClick={() => {
@@ -170,7 +170,7 @@ export default function PromotedListingsLandingPage() {
             }}
             className="text-[12px] text-warm-gray underline hover:text-charcoal"
           >
-            Zmien wybor
+            Zmień wybór
           </button>
         </div>
       </div>
@@ -181,101 +181,67 @@ export default function PromotedListingsLandingPage() {
 
   return (
     <div>
-      {/* HERO */}
+      {/* HERO — compact */}
       <section className="relative overflow-hidden bg-charcoal text-white">
         <div className="absolute inset-0 opacity-30" aria-hidden>
           <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-5xl px-4 py-16 md:py-24">
-          <nav className="text-[11px] text-white/60 mb-8 tracking-wide">
+        <div className="relative mx-auto max-w-5xl px-4 py-10 md:py-14">
+          <nav className="text-[11px] text-white/60 mb-5 tracking-wide">
             <Link href="/seller/dashboard" className="hover:text-white transition-colors">Dashboard</Link>
             <span className="mx-1.5">/</span>
             <span className="text-white">Promoted Listings</span>
           </nav>
 
           <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.6px]">
-            Pilot · Dla {categoryLabel} sellers
+            Pilot · Dla {categoryLabel} sprzedawców
           </span>
-          <h1 className="mt-5 max-w-3xl text-4xl font-light leading-tight md:text-6xl">
+          <h1 className="mt-4 max-w-3xl text-3xl font-light leading-tight md:text-5xl">
             Twoje produkty na <span className="italic">pierwszym</span> miejscu kategorii.
           </h1>
-          <p className="mt-5 max-w-xl text-[15px] text-white/80 md:text-[16px]">
-            Promoted Listings to platna promocja, ktora wystrzela Twoje oferty na top wynikow w kategorii {categoryLabel} i karuzele na stronie glownej Fashion Hero.
+          <p className="mt-4 max-w-xl text-[14px] text-white/80 md:text-[15px]">
+            Promoted Listings to płatna promocja, która wystrzela Twoje oferty na top wyników w kategorii {categoryLabel} i karuzelę na stronie głównej Fashion Hero.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-0.5 text-amber-300">
+              <StarIcon className="h-3.5 w-3.5" filled />
+              <StarIcon className="h-3.5 w-3.5" filled />
+              <StarIcon className="h-3.5 w-3.5" filled />
+              <StarIcon className="h-3.5 w-3.5" filled />
+              <StarIcon className="h-3.5 w-3.5" filled />
+            </div>
+            <span className="text-[12px] text-white/80">
+              Już <span className="font-medium text-white">240+ sprzedawców</span> z kategorii {categoryLabel} promuje oferty · średni wzrost przychodu <span className="font-medium text-white">+187%</span>
+            </span>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <a href="#packages" className="btn-cta bg-white !text-charcoal hover:opacity-90">
               Zobacz pakiety
             </a>
             <a href="#how-it-works" className="text-[12px] uppercase tracking-[0.6px] text-white/70 underline-offset-4 hover:text-white hover:underline">
-              Jak to dziala
+              Jak to działa
             </a>
           </div>
 
-          <div className="mt-12 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/10 pt-8">
-            <HeroStat value="3x" label="wiecej odslon" />
+          <div className="mt-8 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/10 pt-6">
+            <HeroStat value="3x" label="więcej odsłon" />
             <HeroStat value="#1" label="pozycja w kategorii" />
             <HeroStat value="24h" label="czas aktywacji" />
           </div>
         </div>
       </section>
 
-      {/* MOCKUP — Tak to wyglada */}
-      <section className="bg-cream-light py-16 md:py-20">
+      {/* PACKAGES — moved up for quick testing */}
+      <section id="packages" className="bg-cream-light py-10 md:py-14">
         <div className="mx-auto max-w-5xl px-4">
-          <div className="mb-10 max-w-2xl">
-            <span className="text-label">Tak to wyglada</span>
-            <h2 className="mt-2 text-3xl font-light text-charcoal md:text-4xl">
-              Twoj produkt na szczycie kategorii{categoryLabel ? ` ${categoryLabel}` : ""}.
-            </h2>
-            <p className="mt-3 text-[14px] text-warm-gray">
-              Tak widzi Twoja oferte kazdy klient, ktory wchodzi w kategorie. Pozycja #1, jasny badge i lepszy CTR.
-            </p>
-          </div>
-
-          <CategoryMockup categoryLabel={categoryLabel} sellerName={seller.name} />
-        </div>
-      </section>
-
-      {/* WHY */}
-      <section className="bg-background py-16 md:py-20">
-        <div className="mx-auto max-w-5xl px-4">
-          <div className="mb-12 max-w-2xl">
-            <span className="text-label">Dlaczego to dziala</span>
-            <h2 className="mt-2 text-3xl font-light text-charcoal md:text-4xl">
-              3 powody, dla ktorych klienci zobacza Twoje produkty pierwsi.
-            </h2>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            <BenefitCard
-              icon="01"
-              title="Top kategorii"
-              body="Pierwsze 3 pozycje w kategorii naleza do promowanych sprzedawcow. To one zbieraja 60%+ klikniec."
-            />
-            <BenefitCard
-              icon="02"
-              title="Karuzela na home"
-              body="Pakiet Premium umieszcza Twoje produkty w karuzeli promowanych na stronie glownej Fashion Hero."
-            />
-            <BenefitCard
-              icon="03"
-              title="Boost w wyszukiwarce"
-              body="Twoje produkty trafiaja wyzej na liscie wynikow wyszukiwania w obrebie Twojej kategorii."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* PACKAGES */}
-      <section id="packages" className="bg-cream-light py-16 md:py-20">
-        <div className="mx-auto max-w-5xl px-4">
-          <div className="mb-12 max-w-2xl">
+          <div className="mb-8 max-w-2xl">
             <span className="text-label">Wybierz pakiet</span>
-            <h2 className="mt-2 text-3xl font-light text-charcoal md:text-4xl">
-              Zacznij od 49 PLN. Bez minimalnego zobowiazania.
+            <h2 className="mt-2 text-2xl font-light text-charcoal md:text-3xl">
+              Zacznij od 49 PLN. Bez minimalnego zobowiązania.
             </h2>
           </div>
 
@@ -298,10 +264,10 @@ export default function PromotedListingsLandingPage() {
             >
               <span className="text-label">Custom</span>
               <span className="mt-3 text-3xl font-light text-charcoal md:text-4xl">
-                Wlasna <span className="text-base text-warm-gray align-middle">kwota</span>
+                Własna <span className="text-base text-warm-gray align-middle">kwota</span>
               </span>
               <p className="mt-3 text-[13px] text-warm-gray">
-                Powiedz nam ile chcesz przeznaczyc miesiecznie. Dopasujemy program do Twojego budzetu.
+                Powiedz nam ile chcesz przeznaczyć miesięcznie. Dopasujemy program do Twojego budżetu.
               </p>
               <div className="mt-4 flex items-center gap-2">
                 <input
@@ -325,12 +291,59 @@ export default function PromotedListingsLandingPage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section id="how-it-works" className="bg-background py-16 md:py-20">
+      {/* MOCKUP */}
+      <section className="bg-background py-10 md:py-14">
         <div className="mx-auto max-w-5xl px-4">
-          <div className="mb-12 max-w-2xl">
-            <span className="text-label">Jak to dziala</span>
-            <h2 className="mt-2 text-3xl font-light text-charcoal md:text-4xl">
+          <div className="mb-8 max-w-2xl">
+            <span className="text-label">Tak to wygląda</span>
+            <h2 className="mt-2 text-2xl font-light text-charcoal md:text-3xl">
+              Twój produkt na szczycie kategorii{categoryLabel ? ` ${categoryLabel}` : ""}.
+            </h2>
+            <p className="mt-3 text-[14px] text-warm-gray">
+              Tak widzi Twoją ofertę każdy klient, który wchodzi w kategorię. Pozycja #1, jasny badge i lepszy CTR.
+            </p>
+          </div>
+
+          <CategoryMockup categoryLabel={categoryLabel} sellerName={seller.name} />
+        </div>
+      </section>
+
+      {/* WHY */}
+      <section className="bg-cream-light py-10 md:py-14">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="mb-8 max-w-2xl">
+            <span className="text-label">Dlaczego to działa</span>
+            <h2 className="mt-2 text-2xl font-light text-charcoal md:text-3xl">
+              3 powody, dla których klienci zobaczą Twoje produkty pierwsi.
+            </h2>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <BenefitCard
+              icon="01"
+              title="Top kategorii"
+              body="Pierwsze 3 pozycje w kategorii należą do promowanych sprzedawców. To one zbierają 60%+ kliknięć."
+            />
+            <BenefitCard
+              icon="02"
+              title="Karuzela na home"
+              body="Pakiet Premium umieszcza Twoje produkty w karuzeli promowanych na stronie głównej Fashion Hero."
+            />
+            <BenefitCard
+              icon="03"
+              title="Boost w wyszukiwarce"
+              body="Twoje produkty trafiają wyżej na liście wyników wyszukiwania w obrębie Twojej kategorii."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="how-it-works" className="bg-background py-10 md:py-14">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="mb-10 max-w-2xl">
+            <span className="text-label">Jak to działa</span>
+            <h2 className="mt-2 text-2xl font-light text-charcoal md:text-3xl">
               3 kroki do pozycji #1 w Twojej kategorii.
             </h2>
           </div>
@@ -339,29 +352,29 @@ export default function PromotedListingsLandingPage() {
             <StepCard
               number="01"
               title="Wybierz pakiet"
-              body="Dopasuj pakiet do swojej skali sprzedazy. Mozesz zaczac od 49 PLN i skalowac dalej."
+              body="Dopasuj pakiet do swojej skali sprzedaży. Możesz zacząć od 49 PLN i skalować dalej."
             />
             <StepCard
               number="02"
               title="My weryfikujemy"
-              body="Sprawdzamy Twoje konto i produkty, zeby promocja byla zgodna z polityka Fashion Hero. Zwykle 24h."
+              body="Sprawdzamy Twoje konto i produkty, żeby promocja była zgodna z polityką Fashion Hero. Zwykle 24h."
             />
             <StepCard
               number="03"
               title="Twoje produkty na top"
-              body="Aktywujemy promocje. Produkty leca na pierwsze miejsca w kategorii i wybranych miejscach serwisu."
+              body="Aktywujemy promocję. Produkty lecą na pierwsze miejsca w kategorii i wybranych miejscach serwisu."
             />
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-cream-light py-16 md:py-20">
+      <section className="bg-cream-light py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4">
-          <div className="mb-10 text-center">
+          <div className="mb-8 text-center">
             <span className="text-label">FAQ</span>
-            <h2 className="mt-2 text-3xl font-light text-charcoal md:text-4xl">
-              Najczestsze pytania
+            <h2 className="mt-2 text-2xl font-light text-charcoal md:text-3xl">
+              Najczęstsze pytania
             </h2>
           </div>
 
@@ -381,21 +394,21 @@ export default function PromotedListingsLandingPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-charcoal py-16 text-center text-white md:py-20">
+      <section className="bg-charcoal py-12 text-center text-white md:py-16">
         <div className="mx-auto max-w-2xl px-4">
-          <h2 className="text-3xl font-light md:text-4xl">Gotowy, zeby trafic na #1?</h2>
+          <h2 className="text-2xl font-light md:text-3xl">Gotowy, żeby trafić na #1?</h2>
           <p className="mt-3 text-[14px] text-white/70">
-            Wybierz pakiet platnej promocji i odbierz pierwsze odslony juz dzis.
+            Wybierz pakiet płatnej promocji i odbierz pierwsze odsłony już dziś.
           </p>
-          <a href="#packages" className="btn-cta bg-white !text-charcoal hover:opacity-90 mt-7 inline-flex">
+          <a href="#packages" className="btn-cta bg-white !text-charcoal hover:opacity-90 mt-6 inline-flex">
             Zobacz pakiety
           </a>
-          <div className="mt-8">
+          <div className="mt-6">
             <button
               onClick={() => router.back()}
               className="text-[12px] text-white/60 underline hover:text-white"
             >
-              Wroc do panelu
+              Wróć do panelu
             </button>
           </div>
         </div>
@@ -407,7 +420,7 @@ export default function PromotedListingsLandingPage() {
 function HeroStat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="text-3xl font-light text-white md:text-4xl">{value}</p>
+      <p className="text-2xl font-light text-white md:text-3xl">{value}</p>
       <p className="mt-1 text-[11px] uppercase tracking-[0.6px] text-white/60">{label}</p>
     </div>
   );
@@ -531,12 +544,12 @@ function FaqItem({
 
 function CategoryMockup({ categoryLabel, sellerName }: { categoryLabel: string; sellerName: string }) {
   const cards = [
-    { tone: "from-amber-200 to-amber-50", name: "Twoj produkt", price: "189 zl", seller: sellerName, promoted: true },
-    { tone: "from-slate-300 to-slate-100", name: "Classic Runner", price: "229 zl", seller: "SportPeak" },
-    { tone: "from-stone-300 to-stone-100", name: "Daily Walker", price: "179 zl", seller: "EcoThreads" },
-    { tone: "from-zinc-300 to-zinc-100", name: "Trail Pacer", price: "259 zl", seller: "UrbanEdge" },
-    { tone: "from-neutral-300 to-neutral-100", name: "City Slip-on", price: "199 zl", seller: "Bella Donna" },
-    { tone: "from-rose-200 to-rose-50", name: "Soft Loafer", price: "249 zl", seller: "Classic Fit" },
+    { tone: "from-amber-200 to-amber-50", name: "Twój produkt", price: "189 zł", seller: sellerName, promoted: true },
+    { tone: "from-slate-300 to-slate-100", name: "Classic Runner", price: "229 zł", seller: "SportPeak" },
+    { tone: "from-stone-300 to-stone-100", name: "Daily Walker", price: "179 zł", seller: "EcoThreads" },
+    { tone: "from-zinc-300 to-zinc-100", name: "Trail Pacer", price: "259 zł", seller: "UrbanEdge" },
+    { tone: "from-neutral-300 to-neutral-100", name: "City Slip-on", price: "199 zł", seller: "Bella Donna" },
+    { tone: "from-rose-200 to-rose-50", name: "Soft Loafer", price: "249 zł", seller: "Classic Fit" },
   ];
 
   return (
@@ -560,7 +573,7 @@ function CategoryMockup({ categoryLabel, sellerName }: { categoryLabel: string; 
             <p className="text-label">Kategoria</p>
             <h3 className="text-lg font-light text-charcoal md:text-xl">{categoryLabel}</h3>
           </div>
-          <span className="text-[11px] text-warm-gray">128 produktow</span>
+          <span className="text-[11px] text-warm-gray">128 produktów</span>
         </div>
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
