@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useActiveSeller } from "@/hooks/use-active-seller";
@@ -9,6 +10,28 @@ import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { PlusIcon, MinusIcon, StarIcon } from "@/components/icons";
 import type { PromotionPackage } from "@/types/promoted-listings";
+import type { PilotCategory } from "@/types/promoted-listings";
+
+const SHOE_CARDS: Array<{ name: string; price: string; seller: string; image: string }> = [
+  { name: "Trail Pacer", price: "559 zł", seller: "SportPeak", image: "/images/products/product-3.jpg" },
+  { name: "Dash Sport", price: "579 zł", seller: "UrbanEdge", image: "/images/products/product-6.jpg" },
+  { name: "Summit Hiker", price: "639 zł", seller: "Modna Szafa", image: "/images/products/product-14.jpg" },
+  { name: "Edge Runner Pro", price: "549 zł", seller: "DropStyle", image: "/images/products/product-8.jpg" },
+  { name: "Breeze Slip-On", price: "379 zł", seller: "Sneaker Lab", image: "/images/products/product-15.jpg" },
+];
+
+const BAG_CARDS: Array<{ name: string; price: string; seller: string; image: string }> = [
+  { name: "Daily Tote", price: "139 zł", seller: "Marta Handmade", image: "/images/products/product-28.jpg" },
+  { name: "Weekender", price: "189 zł", seller: "Kasia Creates", image: "/images/products/product-29.jpg" },
+  { name: "City Crossbody", price: "159 zł", seller: "EcoThreads", image: "/images/products/product-28.jpg" },
+  { name: "Compact Sling", price: "129 zł", seller: "VintageFind", image: "/images/products/product-29.jpg" },
+  { name: "Canvas Pack", price: "169 zł", seller: "Classic Fit", image: "/images/products/product-28.jpg" },
+];
+
+const PROMOTED_IMAGE_BY_CATEGORY: Record<PilotCategory, string> = {
+  shoes: "/images/products/product-1.jpg",
+  bags: "/images/products/product-29.jpg",
+};
 
 const PRESET_PACKAGES: {
   id: Exclude<PromotionPackage, "custom">;
@@ -304,7 +327,7 @@ export default function PromotedListingsLandingPage() {
             </p>
           </div>
 
-          <CategoryMockup categoryLabel={categoryLabel} sellerName={seller.name} />
+          <CategoryMockup category={category} categoryLabel={categoryLabel} sellerName={seller.name} />
         </div>
       </section>
 
@@ -561,14 +584,23 @@ function FaqItem({
   );
 }
 
-function CategoryMockup({ categoryLabel, sellerName }: { categoryLabel: string; sellerName: string }) {
+function CategoryMockup({
+  category,
+  categoryLabel,
+  sellerName,
+}: {
+  category: PilotCategory | null;
+  categoryLabel: string;
+  sellerName: string;
+}) {
+  const baseCards = category === "bags" ? BAG_CARDS : SHOE_CARDS;
+  const promotedImage = category ? PROMOTED_IMAGE_BY_CATEGORY[category] : PROMOTED_IMAGE_BY_CATEGORY.shoes;
+  const promotedName = category === "bags" ? "Twoja torba" : "Twój produkt";
+  const promotedPrice = category === "bags" ? "149 zł" : "489 zł";
+
   const cards = [
-    { tone: "from-amber-200 to-amber-50", name: "Twój produkt", price: "189 zł", seller: sellerName, promoted: true },
-    { tone: "from-slate-300 to-slate-100", name: "Classic Runner", price: "229 zł", seller: "SportPeak" },
-    { tone: "from-stone-300 to-stone-100", name: "Daily Walker", price: "179 zł", seller: "EcoThreads" },
-    { tone: "from-zinc-300 to-zinc-100", name: "Trail Pacer", price: "259 zł", seller: "UrbanEdge" },
-    { tone: "from-neutral-300 to-neutral-100", name: "City Slip-on", price: "199 zł", seller: "Bella Donna" },
-    { tone: "from-rose-200 to-rose-50", name: "Soft Loafer", price: "249 zł", seller: "Classic Fit" },
+    { name: promotedName, price: promotedPrice, seller: sellerName, image: promotedImage, promoted: true },
+    ...baseCards.map((c) => ({ ...c, promoted: false })),
   ];
 
   return (
@@ -600,10 +632,10 @@ function CategoryMockup({ categoryLabel, sellerName }: { categoryLabel: string; 
             <MockProductCard
               key={i}
               position={i + 1}
-              tone={card.tone}
               name={card.name}
               price={card.price}
               seller={card.seller}
+              image={card.image}
               promoted={card.promoted}
             />
           ))}
@@ -615,24 +647,24 @@ function CategoryMockup({ categoryLabel, sellerName }: { categoryLabel: string; 
 
 function MockProductCard({
   position,
-  tone,
   name,
   price,
   seller,
+  image,
   promoted,
 }: {
   position: number;
-  tone: string;
   name: string;
   price: string;
   seller: string;
+  image: string;
   promoted?: boolean;
 }) {
   return (
     <div
       className={cn(
         "relative rounded-xl border bg-white p-2.5 transition-all",
-        promoted ? "border-charcoal shadow-lg ring-2 ring-amber-400/30" : "border-black/10"
+        promoted ? "border-charcoal shadow-lg ring-2 ring-amber-400/40" : "border-black/10"
       )}
     >
       {promoted && (
@@ -640,14 +672,25 @@ function MockProductCard({
           <StarIcon className="h-3 w-3 text-amber-300" filled /> Promowane
         </span>
       )}
-      <span className="absolute right-2.5 top-2.5 z-10 rounded bg-white/80 px-1.5 py-0.5 text-[9px] font-medium text-warm-gray">
+      <span
+        className={cn(
+          "absolute right-2.5 top-2.5 z-10 rounded px-1.5 py-0.5 text-[9px] font-medium",
+          promoted ? "bg-amber-300 text-charcoal" : "bg-white/80 text-warm-gray"
+        )}
+      >
         #{position}
       </span>
-      <div className={cn("relative mb-2 aspect-square overflow-hidden rounded-lg bg-gradient-to-br", tone)}>
-        <div className="absolute inset-x-3 bottom-3 h-3 rounded-full bg-black/10 blur-md" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className={cn("h-2/5 w-3/5 rounded-[40%_60%_30%_70%]", promoted ? "bg-amber-400/50" : "bg-black/10")} />
-        </div>
+      <div className="relative mb-2 aspect-square overflow-hidden rounded-lg bg-cream-light">
+        <Image
+          src={image}
+          alt={name}
+          width={400}
+          height={400}
+          className="h-full w-full object-cover"
+        />
+        {promoted && (
+          <div className="pointer-events-none absolute inset-0 ring-2 ring-amber-400/60 ring-inset rounded-lg" />
+        )}
       </div>
       <p className={cn("text-[11px] font-medium uppercase tracking-wide", promoted ? "text-charcoal" : "text-charcoal/80")}>
         {name}
