@@ -51,7 +51,7 @@ export function PromotedListingsBanner() {
             Wybierz pakiet platnej promocji i wystrzel swoje produkty na top kategorii {PILOT_CATEGORY_LABEL[category]}.
           </p>
         </div>
-        <span className="btn-cta bg-white !text-charcoal hover:opacity-90 self-start md:self-center">
+        <span className="btn-cta self-start md:self-center">
           Sprawdz pakiety
         </span>
       </div>
