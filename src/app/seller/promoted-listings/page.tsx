@@ -45,9 +45,9 @@ const PRESET_PACKAGES: {
     amount: 49,
     subtitle: "Start",
     bullets: [
-      "Wyróżniona pozycja w kategorii",
-      "Badge PROMOWANE na karcie produktu",
-      "Raport miesięczny z efektów",
+      "Wyróżniona pozycja w Twojej głównej kategorii (np. Jewelry, Shoes)",
+      'Badge "PROMOWANE" na karcie produktu — wszędzie, gdzie się pojawia',
+      "Raport miesięczny: ile osób zobaczyło i kliknęło Twoje produkty",
     ],
   },
   {
@@ -56,10 +56,10 @@ const PRESET_PACKAGES: {
     subtitle: "Premium",
     badge: "Najczęściej wybierane",
     bullets: [
-      "Top 3 miejsca w kategorii",
-      "Karuzela promowanych na home",
-      "Boost na liście wyszukiwania",
-      "Dedykowany opiekun konta",
+      "Top 3 miejsca w Twojej kategorii — wyżej niż 90% sprzedawców",
+      "Rotująca karuzela promowanych produktów na stronie głównej Fashion Hero",
+      "Boost w wynikach wyszukiwania — pojawiasz się też u kupujących z innych kategorii",
+      "Dedykowany opiekun konta + raport tygodniowy",
     ],
   },
 ];
@@ -286,11 +286,14 @@ export default function PromotedListingsLandingPage() {
               className="flex flex-col rounded-2xl border border-black/10 bg-white p-6 md:p-7"
             >
               <span className="text-label">Custom</span>
-              <span className="mt-3 text-3xl font-light text-charcoal md:text-4xl">
-                Własna <span className="text-base text-warm-gray align-middle">kwota</span>
+              <span className="mt-3 text-3xl font-light leading-tight text-charcoal md:text-4xl">
+                Skaluj na swoich warunkach
               </span>
               <p className="mt-3 text-[13px] text-warm-gray">
-                Powiedz nam ile chcesz przeznaczyć miesięcznie. Dopasujemy program do Twojego budżetu.
+                Powiedz nam, ile chcesz przeznaczyć miesięcznie. Razem zaprojektujemy kampanię dopasowaną do Twojej marki — banery na home, sezonowe sloty, wspólne premiery.
+              </p>
+              <p className="mt-3 text-[12px] text-warm-gray">
+                Banery na home · Wspólne kampanie sezonowe · Cotygodniowa optymalizacja
               </p>
               <div className="mt-4 flex items-center gap-2">
                 <input
