@@ -31,7 +31,7 @@ export default function CheckoutPage() {
 
       <h1 className="text-[32px] font-normal text-charcoal mb-8">Checkout</h1>
 
-      <FhPlusInlineSection />
+      {items.length === 0 && <FhPlusInlineSection variant="hero" />}
 
       {items.length === 0 ? (
         <div className="text-center py-16">
@@ -128,6 +128,8 @@ export default function CheckoutPage() {
                 <p className="text-xs text-warm-gray/60">This is a demo checkout page.</p>
               </div>
             </section>
+
+            <FhPlusInlineSection variant="inline" />
 
             {/* Place Order */}
             <button className="btn-cta w-full sm:w-auto sm:min-w-[280px]">

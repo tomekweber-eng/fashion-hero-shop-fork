@@ -11,7 +11,12 @@ const BUNDLE = [
   { headline: "Cashback 3%", sub: "wraca do Ciebie na konto Fashion Hero +" },
 ];
 
-export function FhPlusInlineSection() {
+interface FhPlusInlineSectionProps {
+  variant?: "hero" | "inline";
+}
+
+export function FhPlusInlineSection({ variant = "hero" }: FhPlusInlineSectionProps) {
+  const isHero = variant === "hero";
   const [visible, setVisible] = useState(false);
   const [selectedPrice, setSelectedPrice] = useState<PlanPrice | null>(null);
   const selectedRef = useRef(false);
@@ -46,7 +51,7 @@ export function FhPlusInlineSection() {
   if (selectedPrice !== null) {
     return (
       <section className="mb-10 relative overflow-hidden rounded-2xl bg-charcoal text-white shadow-xl shadow-charcoal/20">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
+        <div className={isHero ? "grid grid-cols-1 lg:grid-cols-[1fr_320px]" : "grid grid-cols-1"}>
           <div className="relative p-8 md:p-10 text-center lg:text-left flex flex-col justify-center">
             <div className="absolute inset-0 opacity-60 pointer-events-none" aria-hidden>
               <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-amber-300/30 blur-3xl" />
@@ -65,16 +70,18 @@ export function FhPlusInlineSection() {
               </p>
             </div>
           </div>
-          <div className="relative hidden lg:block">
-            <Image
-              src="/images/hero/hero-1.jpg"
-              alt=""
-              fill
-              sizes="320px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-charcoal/30 to-charcoal" aria-hidden />
-          </div>
+          {isHero && (
+            <div className="relative hidden lg:block">
+              <Image
+                src="/images/hero/hero-1.jpg"
+                alt=""
+                fill
+                sizes="320px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-charcoal/30 to-charcoal" aria-hidden />
+            </div>
+          )}
         </div>
       </section>
     );
@@ -82,7 +89,7 @@ export function FhPlusInlineSection() {
 
   return (
     <section className="mb-10 relative overflow-hidden rounded-2xl bg-charcoal text-white shadow-xl shadow-charcoal/20">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
+      <div className={isHero ? "grid grid-cols-1 lg:grid-cols-[1fr_320px]" : "grid grid-cols-1"}>
         {/* LEFT: marketing + cards */}
         <div className="relative p-6 md:p-8">
           <div className="absolute inset-0 opacity-60 pointer-events-none" aria-hidden>
@@ -174,7 +181,8 @@ export function FhPlusInlineSection() {
           </div>
         </div>
 
-        {/* RIGHT: hero image */}
+        {/* RIGHT: hero image — only in hero variant */}
+        {isHero && (
         <div className="relative hidden lg:block">
           <Image
             src="/images/hero/hero-1.jpg"
@@ -196,6 +204,7 @@ export function FhPlusInlineSection() {
             </div>
           </div>
         </div>
+        )}
       </div>
     </section>
   );
