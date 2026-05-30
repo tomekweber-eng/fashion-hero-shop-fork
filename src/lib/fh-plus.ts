@@ -101,14 +101,13 @@ export function markBannerSeen(): void {
 
 export function isFlagEnabled(): boolean {
   if (typeof window === "undefined") return false;
+  if (process.env.NEXT_PUBLIC_FH_PLUS_ENABLED === "false") return false;
   try {
-    const phFlag = posthog.isFeatureEnabled(FLAG_KEY);
-    if (phFlag === true) return true;
-    if (phFlag === false) return false;
+    if (posthog.isFeatureEnabled(FLAG_KEY) === false) return false;
   } catch {
-    // posthog not initialized
+    // posthog not initialized — ignore, default to enabled
   }
-  return process.env.NEXT_PUBLIC_FH_PLUS_ENABLED === "true";
+  return true;
 }
 
 type FhPlusEvent = "banner_view" | "banner_click" | "plan_select" | "plan_dismiss";
