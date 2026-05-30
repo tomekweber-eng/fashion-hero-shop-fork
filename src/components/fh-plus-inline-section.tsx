@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { hasSeenBanner, isFlagEnabled, markBannerSeen, PLANS, type PlanPrice, trackFhPlus } from "@/lib/fh-plus";
+import { getBuyerProfile, hasSeenBanner, isFlagEnabled, markBannerSeen, PLANS, type PlanPrice, trackFhPlus } from "@/lib/fh-plus";
 
 const BUNDLE = [
   "Darmowe zwroty do każdego zamówienia",
@@ -17,9 +17,11 @@ export function FhPlusInlineSection() {
 
   useEffect(() => {
     if (!isFlagEnabled()) return;
-    if (hasSeenBanner()) return;
+    const profile = getBuyerProfile();
+    if (!profile) return;
+    if (hasSeenBanner(profile.buyer_id)) return;
     setVisible(true);
-    markBannerSeen();
+    markBannerSeen(profile.buyer_id);
     trackFhPlus("banner_view");
   }, []);
 

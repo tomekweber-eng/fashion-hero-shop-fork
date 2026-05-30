@@ -85,18 +85,24 @@ export function getBuyerProfile(): BuyerProfile | null {
   };
 }
 
-export function hasSeenBanner(): boolean {
+function bannerSeenKey(buyerId: string): string {
+  return `${BANNER_SEEN_KEY}:${buyerId}`;
+}
+
+export function hasSeenBanner(buyerId: string): boolean {
   if (typeof window === "undefined") return false;
-  const raw = localStorage.getItem(BANNER_SEEN_KEY);
+  const raw =
+    localStorage.getItem(bannerSeenKey(buyerId)) ??
+    localStorage.getItem(BANNER_SEEN_KEY); // legacy global key from earlier deploys
   if (!raw) return false;
   const ts = parseInt(raw, 10);
   if (!Number.isFinite(ts)) return false;
   return Date.now() - ts < THIRTY_DAYS_MS;
 }
 
-export function markBannerSeen(): void {
+export function markBannerSeen(buyerId: string): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(BANNER_SEEN_KEY, String(Date.now()));
+  localStorage.setItem(bannerSeenKey(buyerId), String(Date.now()));
 }
 
 export function isFlagEnabled(): boolean {
