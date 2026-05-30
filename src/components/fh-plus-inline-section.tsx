@@ -160,6 +160,7 @@ export function FhPlusInlineSection({ variant = "hero" }: FhPlusInlineSectionPro
                       </div>
                       <button
                         type="button"
+                        data-attr={`fh-plus-plan-${plan.price}`}
                         onClick={() => handleSelect(plan.price)}
                         className={
                           isFeatured
