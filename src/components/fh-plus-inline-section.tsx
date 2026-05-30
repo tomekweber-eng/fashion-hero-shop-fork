@@ -28,24 +28,24 @@ export function FhPlusInlineSection({ variant = "hero" }: FhPlusInlineSectionPro
     setVisible(true);
     if (!hasSeenBanner(profile.buyer_id)) {
       markBannerSeen(profile.buyer_id);
-      trackFhPlus("banner_view");
+      trackFhPlus("banner_view", { variant });
     }
-  }, []);
+  }, [variant]);
 
   useEffect(() => {
     return () => {
       if (visible && !selectedRef.current) {
-        trackFhPlus("plan_dismiss");
+        trackFhPlus("plan_dismiss", { variant });
       }
     };
-  }, [visible]);
+  }, [visible, variant]);
 
   if (!visible) return null;
 
   const handleSelect = (price: PlanPrice) => {
     selectedRef.current = true;
     setSelectedPrice(price);
-    trackFhPlus("plan_select", { plan_price: price });
+    trackFhPlus("plan_select", { plan_price: price, variant });
   };
 
   if (selectedPrice !== null) {
