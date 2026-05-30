@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCart } from "@/components/cart-provider";
+import { FhPlusBanner } from "@/components/fh-plus-banner";
 
 export default function CheckoutPage() {
   const { items } = useCart();
@@ -114,6 +115,8 @@ export default function CheckoutPage() {
                 </div>
               </div>
             </section>
+
+            <FhPlusBanner />
 
             {/* Payment */}
             <section className="mb-10">
