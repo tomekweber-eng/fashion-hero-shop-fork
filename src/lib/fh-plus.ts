@@ -12,9 +12,34 @@ export interface BuyerProfile {
 export const FLAG_KEY = "fh_plus_fakedoor_v1";
 
 export const PLANS = [
-  { price: 29, label: "Starter" },
-  { price: 49, label: "Plus", badge: "Najczęściej wybierane" as const },
-  { price: 79, label: "Pro" },
+  {
+    price: 29,
+    label: "Starter",
+    benefits: [
+      "Zwroty 0 PLN",
+      "Cashback 1% na konto FH+",
+    ],
+  },
+  {
+    price: 49,
+    label: "Plus",
+    badge: "Najczęściej wybierane" as const,
+    benefits: [
+      "Zwroty 0 PLN",
+      "Cashback 2% na konto FH+",
+      "Next day delivery bez dopłat",
+    ],
+  },
+  {
+    price: 79,
+    label: "Pro",
+    benefits: [
+      "Zwroty 0 PLN",
+      "Cashback 3% na konto FH+",
+      "Next day delivery bez dopłat",
+      "Early access do dropów (48h wcześniej)",
+    ],
+  },
 ] as const;
 
 export type PlanPrice = (typeof PLANS)[number]["price"];

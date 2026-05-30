@@ -4,12 +4,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { getBuyerProfile, hasSeenBanner, isFlagEnabled, markBannerSeen, PLANS, type PlanPrice, trackFhPlus } from "@/lib/fh-plus";
 
-const BUNDLE = [
-  { headline: "Zwroty 0 PLN", sub: "do każdego zamówienia, bez wymówek" },
-  { headline: "Next day delivery", sub: "bez dopłat, każda paczka" },
-  { headline: "Early access", sub: "drop'y i wyprzedaże 48h wcześniej" },
-  { headline: "Cashback 3%", sub: "wraca do Ciebie na konto Fashion Hero +" },
-];
 
 interface FhPlusInlineSectionProps {
   variant?: "hero" | "inline";
@@ -112,23 +106,9 @@ export function FhPlusInlineSection({ variant = "hero" }: FhPlusInlineSectionPro
               <strong className="text-white">Fashion Hero +</strong> zamienia każde Twoje zamówienie w VIP-owe doświadczenie — szybciej, taniej, z dostępem do dropów przed wszystkimi. Płacisz raz w roku, korzystasz codziennie.
             </p>
 
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-8 max-w-2xl">
-              {BUNDLE.map((b) => (
-                <li key={b.headline} className="flex items-start gap-2.5">
-                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-amber-400 text-charcoal text-[11px] font-bold">
-                    ✓
-                  </span>
-                  <span>
-                    <span className="block text-[13px] font-medium text-white leading-tight">{b.headline}</span>
-                    <span className="block text-[11px] text-white/60 leading-snug">{b.sub}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-
             <div className="mb-3">
               <p className="text-[10px] font-medium uppercase tracking-[0.8px] text-white/50 mb-3">
-                Wybierz swoją cenę — bundle ten sam
+                Wybierz pakiet — im wyżej, tym więcej dostajesz
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {PLANS.map((plan) => {
@@ -158,6 +138,14 @@ export function FhPlusInlineSection({ variant = "hero" }: FhPlusInlineSectionPro
                           <span className="text-[12px] text-warm-gray">PLN / rok</span>
                         </p>
                       </div>
+                      <ul className="mb-4 space-y-1.5 flex-1">
+                        {plan.benefits.map((b) => (
+                          <li key={b} className="flex items-start gap-1.5 text-[11px] text-charcoal leading-snug">
+                            <span className="mt-0.5 text-amber-500 flex-shrink-0">✓</span>
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
                       <button
                         type="button"
                         data-attr={`fh-plus-plan-${plan.price}`}
