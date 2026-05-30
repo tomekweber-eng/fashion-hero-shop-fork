@@ -7,7 +7,7 @@ const BUNDLE = [
   "Darmowe zwroty do każdego zamówienia",
   "Dostawa next day bez dopłat",
   "Early access do dropów i wyprzedaży",
-  "Cashback 3% na konto FH+",
+  "Cashback 3% na konto Fashion Hero +",
 ];
 
 export function FhPlusInlineSection() {
@@ -55,10 +55,10 @@ export function FhPlusInlineSection() {
             Pakiet {selectedPrice} PLN / rok
           </span>
           <h3 className="text-[20px] md:text-[24px] font-light leading-tight mb-2">
-            Dziękujemy, wkrótce odezwiemy się z dostępem do FH+
+            Dziękujemy, wkrótce odezwiemy się z dostępem do Fashion Hero +
           </h3>
           <p className="text-sm text-white/70 max-w-md mx-auto">
-            Zapisaliśmy Twój wybór. FH+ jest jeszcze w fazie zamkniętej — odezwiemy się mailowo, zanim cokolwiek naliczymy. Możesz spokojnie dokończyć zamówienie poniżej.
+            Zapisaliśmy Twój wybór. Fashion Hero + jest jeszcze w fazie zamkniętej — odezwiemy się mailowo, zanim cokolwiek naliczymy. Możesz spokojnie dokończyć zamówienie poniżej.
           </p>
         </div>
       </section>
@@ -76,10 +76,10 @@ export function FhPlusInlineSection() {
         <div className="mb-5 max-w-2xl">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.6px] text-charcoal mb-3">
             <span className="h-1.5 w-1.5 rounded-full bg-charcoal" />
-            Nowość · FH+
+            Nowość · Fashion Hero +
           </span>
           <h2 className="text-[22px] md:text-[26px] font-light leading-snug text-white mb-2">
-            Dodaj <span className="italic">FH+</span> do tego zamówienia
+            Dodaj <span className="italic">Fashion Hero +</span> do tego zamówienia
           </h2>
           <p className="text-[13px] text-white/75">
             Roczna subskrypcja: darmowe zwroty, next day delivery, early access, cashback 3%. Wybierz cenę, którą uważasz za fair — bez ukrytych kosztów, bez automatycznego odnowienia.
