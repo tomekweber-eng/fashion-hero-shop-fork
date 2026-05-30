@@ -31,6 +31,8 @@ export default function CheckoutPage() {
 
       <h1 className="text-[32px] font-normal text-charcoal mb-8">Checkout</h1>
 
+      <FhPlusInlineSection />
+
       {items.length === 0 ? (
         <div className="text-center py-16">
           <p className="text-sm text-warm-gray mb-6">Your cart is empty.</p>
@@ -115,8 +117,6 @@ export default function CheckoutPage() {
                 </div>
               </div>
             </section>
-
-            <FhPlusInlineSection />
 
             {/* Payment */}
             <section className="mb-10">
