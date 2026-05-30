@@ -19,10 +19,11 @@ export function FhPlusInlineSection() {
     if (!isFlagEnabled()) return;
     const profile = getBuyerProfile();
     if (!profile) return;
-    if (hasSeenBanner(profile.buyer_id)) return;
     setVisible(true);
-    markBannerSeen(profile.buyer_id);
-    trackFhPlus("banner_view");
+    if (!hasSeenBanner(profile.buyer_id)) {
+      markBannerSeen(profile.buyer_id);
+      trackFhPlus("banner_view");
+    }
   }, []);
 
   useEffect(() => {
