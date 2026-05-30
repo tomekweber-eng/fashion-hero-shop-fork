@@ -309,7 +309,12 @@ export default function PromotedListingsLandingPage() {
                 />
                 <span className="text-[13px] text-warm-gray">PLN</span>
               </div>
-              <button type="submit" className="btn-cta mt-auto w-full justify-center !mt-6">
+              <button
+                type="submit"
+                data-ph-capture-attribute-package="custom"
+                data-attr="promoted-select-custom"
+                className="btn-cta mt-auto w-full justify-center !mt-6"
+              >
                 Wybierz
               </button>
             </form>
@@ -534,7 +539,12 @@ function PackageCard({
           </li>
         ))}
       </ul>
-      <button onClick={onSelect} className="btn-cta mt-auto w-full justify-center !mt-7">
+      <button
+        onClick={onSelect}
+        data-ph-capture-attribute-package={String(amount)}
+        data-attr={`promoted-select-${amount}`}
+        className="btn-cta mt-auto w-full justify-center !mt-7"
+      >
         Wybierz pakiet
       </button>
     </div>
