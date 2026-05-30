@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCart } from "@/components/cart-provider";
-import { FhPlusBanner } from "@/components/fh-plus-banner";
+import { FhPlusInlineSection } from "@/components/fh-plus-inline-section";
 
 export default function CheckoutPage() {
   const { items } = useCart();
@@ -116,7 +116,7 @@ export default function CheckoutPage() {
               </div>
             </section>
 
-            <FhPlusBanner />
+            <FhPlusInlineSection />
 
             {/* Payment */}
             <section className="mb-10">
