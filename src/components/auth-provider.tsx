@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import posthog from "posthog-js";
 
 interface User {
   email: string;
@@ -26,7 +27,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        setUser(JSON.parse(stored));
+        const parsed = JSON.parse(stored) as User;
+        setUser(parsed);
+        try {
+          posthog.identify(parsed.email);
+        } catch {
+          // posthog not initialized yet
+        }
       }
     } catch {
       // ignore parse errors
@@ -42,6 +49,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
     setUser(newUser);
+    try {
+      posthog.identify(email);
+    } catch {
+      // posthog not initialized
+    }
   }, []);
 
   const register = useCallback(async (data: { email: string; password: string; firstName: string; lastName: string }) => {
@@ -52,11 +64,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
     setUser(newUser);
+    try {
+      posthog.identify(data.email);
+    } catch {
+      // posthog not initialized
+    }
   }, []);
 
   const logout = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
     setUser(null);
+    try {
+      posthog.reset();
+    } catch {
+      // posthog not initialized
+    }
   }, []);
 
   return (

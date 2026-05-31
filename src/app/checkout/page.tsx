@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCart } from "@/components/cart-provider";
-import { FhPlusInlineSection } from "@/components/fh-plus-inline-section";
+import { FhPlusBanner } from "@/components/fh-plus-banner";
 
 export default function CheckoutPage() {
   const { items } = useCart();
@@ -30,8 +30,6 @@ export default function CheckoutPage() {
       </nav>
 
       <h1 className="text-[32px] font-normal text-charcoal mb-8">Checkout</h1>
-
-      {items.length === 0 && <FhPlusInlineSection variant="hero" />}
 
       {items.length === 0 ? (
         <div className="text-center py-16">
@@ -118,6 +116,8 @@ export default function CheckoutPage() {
               </div>
             </section>
 
+            <FhPlusBanner />
+
             {/* Payment */}
             <section className="mb-10">
               <h2 className="text-[12px] font-medium uppercase tracking-[0.8px] text-charcoal mb-5 pb-2 border-b border-border">
@@ -129,10 +129,12 @@ export default function CheckoutPage() {
               </div>
             </section>
 
-            <FhPlusInlineSection variant="inline" />
-
             {/* Place Order */}
-            <button className="btn-cta w-full sm:w-auto sm:min-w-[280px]">
+            <button
+              type="button"
+              data-attr="checkout-place-order"
+              className="btn-cta w-full sm:w-auto sm:min-w-[280px]"
+            >
               PLACE ORDER
             </button>
           </div>
