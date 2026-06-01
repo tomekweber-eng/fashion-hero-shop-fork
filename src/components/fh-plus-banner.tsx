@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getBuyerIdentity, hasSeenBanner, isFlagEnabled, markBannerSeen } from "@/lib/fh-plus";
+import { getBuyerIdentity, isFlagEnabled } from "@/lib/fh-plus";
 import {
   type Cohort,
   getCohort,
@@ -46,9 +46,7 @@ export function FhPlusBanner() {
     identifyForExperiment();
     if (!isExposedCohort(c)) return;
     if (ab !== "experimental") return;
-    if (hasSeenBanner(identity.buyer_id)) return;
     setVisible(true);
-    markBannerSeen(identity.buyer_id);
   }, []);
 
   if (!visible || !cohort || !isExposedCohort(cohort)) return null;
