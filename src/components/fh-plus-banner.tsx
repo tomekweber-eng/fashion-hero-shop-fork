@@ -7,7 +7,6 @@ import {
   type Cohort,
   getCohort,
   identifyForExperiment,
-  isExposedCohort,
 } from "@/lib/fh-plus-segments";
 import { type AbGroup, getAbGroup } from "@/lib/fh-plus-ab";
 
@@ -17,13 +16,23 @@ interface Hook {
   cta: string;
 }
 
-const HOOKS: Record<"G1" | "G2", Hook> = {
+const HOOKS: Record<Cohort, Hook> = {
   G1: {
     eyebrow: "Dla regularnych",
     headline: "Next day delivery + early access do dropów",
     cta: "Sprawdź FH+",
   },
   G2: {
+    eyebrow: "Dla testujących rozmiary",
+    headline: "Zamów więcej rozmiarów bez stresu o koszty zwrotu",
+    cta: "Sprawdź FH+",
+  },
+  G3: {
+    eyebrow: "Dla regularnych",
+    headline: "Next day delivery + early access do dropów",
+    cta: "Sprawdź FH+",
+  },
+  G4: {
     eyebrow: "Dla testujących rozmiary",
     headline: "Zamów więcej rozmiarów bez stresu o koszty zwrotu",
     cta: "Sprawdź FH+",
@@ -44,12 +53,10 @@ export function FhPlusBanner() {
     setCohort(c);
     setAbGroup(ab);
     identifyForExperiment();
-    if (!isExposedCohort(c)) return;
-    if (ab !== "experimental") return;
     setVisible(true);
   }, []);
 
-  if (!visible || !cohort || !isExposedCohort(cohort)) return null;
+  if (!visible || !cohort) return null;
 
   const hook = HOOKS[cohort];
 
