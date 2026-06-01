@@ -34,12 +34,6 @@ const HERO_COPY: Record<Cohort, { eyebrow: string; headline: string; sub: string
   },
 };
 
-const STATS = [
-  { value: "1,847", label: "kupujących na waitlist" },
-  { value: "+38%", label: "częstszych zakupów w pilotażu" },
-  { value: "97%", label: "poleciłoby znajomym" },
-];
-
 const BENEFITS = [
   {
     icon: "↻",
@@ -78,40 +72,6 @@ const STEPS = [
     n: "03",
     title: "Korzystaj od dnia 1",
     body: "Gdy ruszymy, dostaniesz mailem aktywację. Płatność dopiero wtedy, bez automatycznego odnowienia.",
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "Wracam do Fashion Hero zamiast Zary tylko dlatego, że wiem, że paczka przyjedzie jutro. Subskrypcja zwraca mi się w jednym dropie sezonowym.",
-    name: "Marta, 31",
-    role: "Beta-testerka FH+",
-  },
-  {
-    quote:
-      "Zwroty bez limitu zmieniły sposób, w jaki kupuję. Wcześniej brałam jeden rozmiar i się modliłam — teraz biorę trzy i wybieram.",
-    name: "Ola, 27",
-    role: "Beta-testerka FH+",
-  },
-];
-
-const FAQ = [
-  {
-    q: "Czy to jest realny produkt, czy fake door?",
-    a: "Jesteśmy szczerzy: Fashion Hero + jest w fazie zamkniętej. Twoja rezerwacja pomaga nam zwalidować ile osób tego naprawdę chce. Jeśli pull będzie wystarczający — launchujemy w 4-6 tygodni i informujemy mailem przed pierwszą płatnością.",
-  },
-  {
-    q: "Co jeśli nie launchujecie?",
-    a: "Twoja rezerwacja wygasa, nic Ci nie odejmiemy z konta (i tak nic nie odjęliśmy). Email dostaniesz z update'em — bez ghostowania.",
-  },
-  {
-    q: "Czy subskrypcja sama się odnawia?",
-    a: "Nie. To była nasza zasada od początku. Po 365 dniach poprosimy o świadomą decyzję, czy chcesz przedłużyć — bez automatu, bez sztuczek.",
-  },
-  {
-    q: "Czemu są 3 ceny za to samo?",
-    a: "Bo testujemy ile Fashion Hero + jest warte realnie. Każda z 3 kart daje identyczny bundle — Ty wybierasz, co uważasz za fair. To pomaga nam ustalić ostateczną cenę gdy launchujemy.",
   },
 ];
 
@@ -246,75 +206,6 @@ export default function FhPlusPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="border-y border-border bg-cream-light">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-8 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border">
-          {STATS.map((s) => (
-            <div key={s.label} className="px-2 py-4 sm:py-2 text-center">
-              <p className="text-[32px] md:text-[36px] font-light text-charcoal leading-none mb-1.5">
-                {s.value}
-              </p>
-              <p className="text-[12px] uppercase tracking-[0.6px] text-warm-gray">
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Benefits / bundle */}
-      <section className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
-        <div className="max-w-2xl mb-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.8px] text-amber-600 mb-3">
-            Co dostajesz w środku
-          </p>
-          <h2 className="text-[28px] md:text-[36px] font-light text-charcoal leading-[1.15]">
-            Bundle, który zmienia każdą paczkę — niezależnie od ceny, którą wybierzesz.
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {BENEFITS.map((b) => (
-            <article
-              key={b.title}
-              className="relative p-7 rounded-2xl bg-cream-light border border-cream-dark transition-all hover:shadow-lg hover:-translate-y-0.5"
-            >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-amber-400 text-charcoal text-[24px] font-light mb-5">
-                {b.icon}
-              </span>
-              <h3 className="text-[18px] font-medium text-charcoal mb-2 leading-tight">
-                {b.title}
-              </h3>
-              <p className="text-[14px] text-warm-gray leading-relaxed">{b.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section className="bg-charcoal text-white py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="max-w-2xl mb-12">
-            <p className="text-[11px] font-medium uppercase tracking-[0.8px] text-amber-300 mb-3">
-              Jak to działa
-            </p>
-            <h2 className="text-[28px] md:text-[36px] font-light leading-[1.15]">
-              3 kroki. Bez płatności teraz, bez automatycznego odnowienia.
-            </h2>
-          </div>
-          <ol className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {STEPS.map((s) => (
-              <li key={s.n} className="relative">
-                <span className="text-[64px] font-light text-amber-300/80 leading-none block mb-3">
-                  {s.n}
-                </span>
-                <h3 className="text-[18px] font-medium text-white mb-2">{s.title}</h3>
-                <p className="text-[14px] text-white/70 leading-relaxed">{s.body}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       {/* Plans */}
       <section id="plans" className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24 scroll-mt-8">
         <div className="max-w-2xl mb-10">
@@ -425,75 +316,58 @@ export default function FhPlusPage() {
         )}
       </section>
 
-      {/* Testimonials */}
-      {step === "plans" && (
-        <section className="bg-cream-light py-16 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-8">
-            <div className="max-w-2xl mb-10">
-              <p className="text-[11px] font-medium uppercase tracking-[0.8px] text-amber-600 mb-3">
-                Beta program · 60 osób
-              </p>
-              <h2 className="text-[24px] md:text-[32px] font-light text-charcoal leading-[1.15]">
-                Co mówią pierwsze klientki Fashion Hero +
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {TESTIMONIALS.map((t) => (
-                <figure
-                  key={t.name}
-                  className="bg-white rounded-2xl p-7 border border-cream-dark"
-                >
-                  <div className="text-amber-400 text-[20px] leading-none mb-3" aria-hidden>★★★★★</div>
-                  <blockquote className="text-[15px] text-charcoal leading-relaxed mb-5">
-                    „{t.quote}"
-                  </blockquote>
-                  <figcaption className="flex items-center gap-3 pt-4 border-t border-cream-dark">
-                    <span className="h-10 w-10 rounded-full bg-charcoal text-white flex items-center justify-center text-[14px] font-medium">
-                      {t.name.charAt(0)}
-                    </span>
-                    <span>
-                      <span className="block text-[13px] font-medium text-charcoal">{t.name}</span>
-                      <span className="block text-[11px] text-warm-gray uppercase tracking-[0.6px]">{t.role}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Benefits / bundle */}
+      <section className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
+        <div className="max-w-2xl mb-12">
+          <p className="text-[11px] font-medium uppercase tracking-[0.8px] text-amber-600 mb-3">
+            Co dostajesz w środku
+          </p>
+          <h2 className="text-[28px] md:text-[36px] font-light text-charcoal leading-[1.15]">
+            Bundle, który zmienia każdą paczkę — niezależnie od ceny, którą wybierzesz.
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {BENEFITS.map((b) => (
+            <article
+              key={b.title}
+              className="relative p-7 rounded-2xl bg-cream-light border border-cream-dark transition-all hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-amber-400 text-charcoal text-[24px] font-light mb-5">
+                {b.icon}
+              </span>
+              <h3 className="text-[18px] font-medium text-charcoal mb-2 leading-tight">
+                {b.title}
+              </h3>
+              <p className="text-[14px] text-warm-gray leading-relaxed">{b.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      {/* FAQ */}
-      {step === "plans" && (
-        <section className="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-24">
-          <div className="mb-10 text-center">
-            <p className="text-[11px] font-medium uppercase tracking-[0.8px] text-amber-600 mb-3">
-              Często zadawane pytania
+      {/* How it works */}
+      <section className="bg-charcoal text-white py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
+          <div className="max-w-2xl mb-12">
+            <p className="text-[11px] font-medium uppercase tracking-[0.8px] text-amber-300 mb-3">
+              Jak to działa
             </p>
-            <h2 className="text-[28px] md:text-[36px] font-light text-charcoal leading-[1.15]">
-              Bez ukrytych haczyków. Pytaj śmiało.
+            <h2 className="text-[28px] md:text-[36px] font-light leading-[1.15]">
+              3 kroki. Bez płatności teraz, bez automatycznego odnowienia.
             </h2>
           </div>
-          <div className="space-y-3">
-            {FAQ.map((item) => (
-              <details
-                key={item.q}
-                className="group rounded-xl border border-border bg-white p-5 open:shadow-md transition-shadow"
-              >
-                <summary className="flex cursor-pointer items-start justify-between gap-4 list-none">
-                  <span className="text-[15px] font-medium text-charcoal leading-snug">
-                    {item.q}
-                  </span>
-                  <span className="text-amber-500 text-[20px] leading-none group-open:rotate-45 transition-transform">
-                    +
-                  </span>
-                </summary>
-                <p className="mt-4 text-[14px] text-warm-gray leading-relaxed">{item.a}</p>
-              </details>
+          <ol className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {STEPS.map((s) => (
+              <li key={s.n} className="relative">
+                <span className="text-[64px] font-light text-amber-300/80 leading-none block mb-3">
+                  {s.n}
+                </span>
+                <h3 className="text-[18px] font-medium text-white mb-2">{s.title}</h3>
+                <p className="text-[14px] text-white/70 leading-relaxed">{s.body}</p>
+              </li>
             ))}
-          </div>
-        </section>
-      )}
+          </ol>
+        </div>
+      </section>
 
       {/* Bottom CTA */}
       {step === "plans" && (
