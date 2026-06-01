@@ -11,9 +11,26 @@ export const BUNDLE = [
 ] as const;
 
 export const PLANS = [
-  { price: 29, label: "Starter" },
-  { price: 49, label: "Plus" },
-  { price: 79, label: "Pro" },
+  {
+    price: 29,
+    label: "Starter",
+    benefits: ["Free returns bez limitu", "Cashback 1%"],
+  },
+  {
+    price: 49,
+    label: "Plus",
+    benefits: ["Free returns bez limitu", "Cashback 2%", "Next day delivery"],
+  },
+  {
+    price: 79,
+    label: "Pro",
+    benefits: [
+      "Free returns bez limitu",
+      "Cashback 3%",
+      "Next day delivery",
+      "Early access do dropów (24h wcześniej)",
+    ],
+  },
 ] as const;
 
 export type PlanPrice = (typeof PLANS)[number]["price"];

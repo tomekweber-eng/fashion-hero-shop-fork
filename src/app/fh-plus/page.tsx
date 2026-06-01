@@ -214,12 +214,12 @@ export default function FhPlusPage() {
           </p>
           <h2 className="text-[28px] md:text-[36px] font-light text-charcoal leading-[1.15] mb-4">
             {step === "plans"
-              ? "Ten sam bundle. Trzy ceny. Ty decydujesz, ile Fashion Hero + jest dla Ciebie warte."
+              ? "Trzy poziomy. Im wyżej, tym więcej dostajesz."
               : "Ostatni krok — zarezerwuj swoją cenę."}
           </h2>
           {step === "plans" && (
             <p className="text-[14px] text-warm-gray leading-relaxed">
-              Nie zwiększymy ceny po Twojej rezerwacji. Nie podzielimy bundle'a. Nie zaczniemy automatycznie pobierać — odezwiemy się mailem przed launchem.
+              Cena gwarantowana po rezerwacji. Bez automatycznego odnowienia — odezwiemy się mailem przed launchem.
             </p>
           )}
         </div>
@@ -247,18 +247,15 @@ export default function FhPlusPage() {
                   ≈ {(plan.price / 365).toFixed(2).replace(".", ",")} PLN / dzień
                 </p>
                 <ul className="space-y-2 mb-7 flex-1">
-                  <li className="flex items-start gap-2 text-[13px] text-charcoal leading-snug">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 flex-shrink-0" />
-                    Pełny bundle Fashion Hero +
-                  </li>
-                  <li className="flex items-start gap-2 text-[13px] text-charcoal leading-snug">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 flex-shrink-0" />
-                    Cena gwarantowana przy launchu
-                  </li>
-                  <li className="flex items-start gap-2 text-[13px] text-charcoal leading-snug">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 flex-shrink-0" />
-                    Bez automatycznego odnowienia
-                  </li>
+                  {plan.benefits.map((b) => (
+                    <li
+                      key={b}
+                      className="flex items-start gap-2 text-[13px] text-charcoal leading-snug"
+                    >
+                      <span className="mt-0.5 text-amber-500 flex-shrink-0">✓</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
                 </ul>
                 <span className="mt-auto inline-flex items-center justify-center w-full bg-cream-light text-charcoal text-[12px] font-medium uppercase tracking-[0.6px] py-3 rounded transition-colors group-hover:bg-charcoal group-hover:text-white">
                   Zarezerwuj {plan.price} PLN
